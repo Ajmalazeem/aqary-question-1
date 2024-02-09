@@ -1,24 +1,17 @@
-// service.go
 package service
 
 import (
 	"context"
 	"database/sql"
-	"log"
+	"fmt"
+	// "log"
 	"math/rand"
 	"net/http"
 	"time"
 
-    "../route"
+    "question-1/store"
 	"github.com/gin-gonic/gin"
 )
-
-// type Service interface {
-// 	CreateUser(c *gin.Context)
-// 	GetPackageNameDetails(req model.GetRequest) (*model.Model, error)
-// 	GetChangeLogDetails(req model.GetRequest) (*[]model.Changelog, error)
-// }
-
 
 type Service struct {
 	db *sql.DB
@@ -112,5 +105,6 @@ func (s *Service) VerifyOTP(c *gin.Context) {
 
 func generateRandomOTP() string {
 	// Implement your logic to generate a random 4-digit OTP
+	rand.Seed(time.Now().UnixNano()) // Seed the random number generator with the current time
 	return fmt.Sprintf("%04d", rand.Intn(10000))
 }

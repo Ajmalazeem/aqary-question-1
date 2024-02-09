@@ -1,4 +1,3 @@
-// main.go
 package main
 
 import (
@@ -7,7 +6,7 @@ import (
     "log"
 	"os"
     // "net/http"
-	// "./route"
+	"question-1/route"
 	"github.com/joho/godotenv"
     "github.com/gin-gonic/gin"
     _ "github.com/lib/pq"
@@ -30,7 +29,6 @@ func main() {
 	password := os.Getenv("DB_PASSWORD")
 	dbname := os.Getenv("DB_NAME")
 
-	// Construct the connection string
 	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",host, port, user, password, dbname)
 
 	// Connect to the PostgreSQL database
@@ -40,13 +38,13 @@ func main() {
 	}
 	defer db.Close()
 
-    // Create a Gin router
+// Create a Gin router
     router := gin.Default()
 
 	controller := route.NewController(db)
 	controller.RegisterRoutes(router)
 
-	// Start the HTTP server
+//start server
 	if err := router.Run(":8080"); err != nil {
 		log.Fatal("Failed to start the server:", err)
 	}

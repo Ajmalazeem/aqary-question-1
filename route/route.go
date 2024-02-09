@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"database/sql"
 
-	"../service"
+	"question-1/service"
 )
 
 type Controller struct {
@@ -20,7 +20,7 @@ func NewController(db *sql.DB) *Controller {
 func (c *Controller) RegisterRoutes(router *gin.Engine) {
 	api := router.Group("/api/users")
 	{
-		api.POST("", c.service.CreateUser)
+		api.POST("/create", c.service.CreateUser)
 		api.POST("/generateotp", c.service.GenerateOTP)
 		api.POST("/verifyotp", c.service.VerifyOTP)
 	}
