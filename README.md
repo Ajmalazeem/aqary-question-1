@@ -1,6 +1,9 @@
 # aquary-question-4
 Assesment question number 1 given by aqary international group
 
+//.env file is not added in gitignore for helping purpose
+// due to lack of knowledge in "pgx" ive used sql packacge
+
 
 Question # 1
 

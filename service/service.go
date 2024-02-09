@@ -104,7 +104,6 @@ func (s *Service) VerifyOTP(c *gin.Context) {
 }
 
 func generateRandomOTP() string {
-	// Implement your logic to generate a random 4-digit OTP
-	rand.Seed(time.Now().UnixNano()) // Seed the random number generator with the current time
+	rand.Seed(time.Now().UnixNano()) 
 	return fmt.Sprintf("%04d", rand.Intn(10000))
 }
